@@ -1,8 +1,5 @@
-const VERCEL_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 const RAILWAY_STATIC_URL = process.env.RAILWAY_STATIC_URL ? `https://${process.env.RAILWAY_STATIC_URL}` : "";
-const HEROKU_URL = process.env.HEROKU_APP_NAME ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com` : "";
-export const WEBAPP_URL =
-  process.env.NEXT_PUBLIC_WEBAPP_URL || VERCEL_URL || RAILWAY_STATIC_URL || HEROKU_URL;
+export const WEBAPP_URL = process.env.NEXT_PUBLIC_WEBAPP_URL || RAILWAY_STATIC_URL;
 /** @deprecated use `WEBAPP_URL` */
 export const BASE_URL = WEBAPP_URL;
 export const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL || "https://cal.com";
@@ -13,8 +10,8 @@ export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || "Cal.com, In
 // This is the URL from which all Cal Links and their assets are served.
 // Use website URL to make links shorter(cal.com and not app.cal.com)
 // As website isn't setup for preview environments, use the webapp url instead
+console.warn("avishay2", WEBAPP_URL, process.env.NEXT_PUBLIC_WEBAPP_URL, RAILWAY_STATIC_URL);
 export const CAL_URL = new URL(WEBAPP_URL).hostname.endsWith(".vercel.app") ? WEBAPP_URL : WEBSITE_URL;
-
 export const CONSOLE_URL =
   new URL(WEBAPP_URL).hostname.endsWith(".cal.dev") || process.env.NODE_ENV !== "production"
     ? `https://console.cal.dev`

@@ -24,7 +24,7 @@ const LicenseRequired = ({ children, as = "", ...rest }: LicenseRequiredProps) =
   const hasValidLicense = session.data ? session.data.hasValidLicense : null;
   return (
     <Component {...rest}>
-      {hasValidLicense === null || hasValidLicense ? (
+      {hasValidLicense === null || hasValidLicense || true ? (
         children
       ) : (
         <EmptyScreen
